@@ -300,7 +300,7 @@ elif st.session_state[PAGE_SELECTION_KEY] == "Chat":
             "question": prompt,
             "companyId": chosen_company_id,
             "modelId": chosen_model_id,
-            "sessionId": "1929139213910230",  # Inclui o session ID
+            "sessionId": st.session_state["session_id"],
         }
 
         print('request_data', request_data)
