@@ -1,7 +1,6 @@
 import streamlit as st
 import requests
 import base64
-import uuid 
 
 PAGE_SELECTION_KEY = "page_selection"
 ENDPOINT_URL = "https://79n26hgdxh.execute-api.us-east-1.amazonaws.com/"
@@ -10,10 +9,6 @@ selected_archives = []
 
 if PAGE_SELECTION_KEY not in st.session_state:
     st.session_state[PAGE_SELECTION_KEY] = "Adicione Empresa"
-    
-    # Adiciona uma chave para armazenar o sessionId
-if "session_id" not in st.session_state:
-    st.session_state["session_id"] = str(uuid.uuid4())  # Gera um novo session ID
 
 create_company_page = st.sidebar.button("Adicione Empresa")
 update_company_page = st.sidebar.button("Atualize Empresa")
@@ -300,7 +295,6 @@ elif st.session_state[PAGE_SELECTION_KEY] == "Chat":
             "question": prompt,
             "companyId": chosen_company_id,
             "modelId": chosen_model_id,
-            "sessionId": st.session_state["session_id"],  # Inclui o session ID
         }
 
         print('request_data', request_data)
