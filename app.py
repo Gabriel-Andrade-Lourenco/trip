@@ -54,7 +54,7 @@ if st.session_state[PAGE_SELECTION_KEY] == "Adicione Empresa":
                 "prompt": prompt,
                 "documentType": document_type,
                 "documentContent": base64_content,
-                "documentName": document_file.name.split('.')[0],
+                "documentName": document_file.name.split('.')[0]
             }
 
             try:
@@ -244,7 +244,7 @@ if st.session_state[PAGE_SELECTION_KEY] == "Empresas":
                     except Exception as e:
                         st.error(f"Um erro ocorreu: {str(e)}")
 elif st.session_state[PAGE_SELECTION_KEY] == "Chat":
-    st.title("💬 Chatbot NOVO")
+    st.title("💬 Chatbot")
 
     try:
         response = requests.get(ENDPOINT_URL + "/company")
@@ -300,7 +300,7 @@ elif st.session_state[PAGE_SELECTION_KEY] == "Chat":
             "question": prompt,
             "companyId": chosen_company_id,
             "modelId": chosen_model_id,
-            "sessionId": st.session_state["session_id"],
+            "sessionId": st.session_state["session_id"],  # Inclui o session ID
         }
 
         print('request_data', request_data)
